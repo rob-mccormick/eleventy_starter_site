@@ -7,6 +7,10 @@
     <title>{{ title }}</title>
   </head>
   <body>
+    {% include "partials/site-header.html" %}
+
     <main>{% block content %}{% endblock %}</main>
+
+    {% include "partials/site-footer.html" %}
   </body>
 </html>

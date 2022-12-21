@@ -1,6 +1,6 @@
 # Eleventy Starter Site
 
-This is repo accompanies my blog post, [Getting Started With Eleventy](https://robmc.dev/blog/getting-started-with-eleventy).
+This repo accompanies my blog post, [Getting Started With Eleventy](https://robmc.dev/blog/getting-started-with-eleventy).
 
 In the article I go through the basics you need to know to set up your Eleventy project and build a basic portfolio site for Jimmy Jones, a monkey journalist. This is the code for the completed site.
 

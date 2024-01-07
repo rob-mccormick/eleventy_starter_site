@@ -1,8 +1,32 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-  <article>
-    <h1>{{ title }}</h1>
-    {{ content | safe }}
-  </article>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__text">
+        <h1>{{ intro.heading }}</h1>
+        <p>{{ intro.blurb }}</p>
+      </div>
+      <img src="images/jimmy-jones-640.webp" alt="Headshot of Jimmy Jones, a journalist monkey">
+    </div>
+  </section>
+
+  <section class="latest-articles">
+    <div class="container">
+      <div class="latest-articles__wrapper">
+        <h2>Latest Articles</h2>
+        <div class="latest-articles__card-holder">
+          {% for article in collections.articles %}
+            <article class="latest-articles__card">
+              <a href="{{ article.url }}">
+                <h2>{{ article.data.title }}</h2>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}

@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/styles/");
   eleventyConfig.addPassthroughCopy("./src/images/");
   eleventyConfig.addPassthroughCopy("./src/fonts/");
+  eleventyConfig.addPassthroughCopy({"./src/favicon/": "/"});
 
   return {
     markdownTemplateEngine: 'njk',

@@ -1,6 +1,412 @@
-h1 {
-  color: goldenrod;
+/* FONTS */
+@font-face {
+  font-family: "Goudy Heavyface";
+  src: url("../fonts/GoudyStd-Heavyface.woff2") format('woff2');
 }
-h1::after {
-  content: ' 👋';
+
+/* CSS VARIABLES */
+:root {
+  /* Colors */
+  --brand-color: hsl(47, 89%, 52%);
+  --black: hsl(4, 10%, 6%);
+  --white: hsl(0, 0%, 100%);
+  --brown-dark: hsl(4, 10%, 26%);
+  --brown-light: hsl(4, 10%, 48%);
+  --background-gray: hsl(42, 25%, 92%);
+  /* Fonts */
+  --impact-font: "Goudy Heavyface", "Helvetica Neue", sans-serif;
+  --body-font: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  "Helvetica", "Arial", sans-serif;
+  --line-height-tight: 1.2;
+  --line-height-regular: 1.5;
+  --line-height-prose: 1.7;
+  /* Text */
+  --text-00: 0.875rem;
+  --text-0: 1rem;
+  --text-1: 1.125rem;
+  --text-2: 1.25rem;
+  --text-3: 1.5rem;
+  --text-4: 1.875rem;
+  --text-5: 2.25rem;
+  --text-6: 3rem;
+  /* Spacing */
+  --s0-25: 0.25rem;
+  --s0-5: 0.5rem;
+  --s0-75: 0.75rem;
+  --s1: 1rem;
+  --s1-5: 1.5rem;
+  --s2: 2rem;
+  --s2-5: 2.5rem;
+  --s3: 3rem;
+  --s3-5: 3.5rem;
+  --s4: 4rem;
+  --s5: 5rem;
+  --s6: 6rem;
+  --s10: 10rem;
+  --s15: 15rem;
+  --s18: 18rem;
+  --s20: 20rem;
+  --s22: 22rem;
+  --s25: 25rem;
+  --s30: 30rem;
+  /* Shadows */
+  --shadow-md: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  --shadow-lg: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  --shadow-sticker: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.25));
+  /* Other */
+  --article-highlight-height: 14.5rem;
+}
+
+/* STYLE RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: var(--line-height-regular);
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* COMMON STYLING */
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--body-font);
+  color: var(--black);
+  background-color: var(--background-gray);
+}
+header,
+main,
+footer {
+  display: block;
+}
+footer {
+  margin-top: auto;
+}
+h1,
+h2,
+h3 {
+  font-family: var(--impact-font);
+  font-weight: 400;
+}
+.container {
+  --inset: var(--s1);
+  padding-left: var(--inset);
+  padding-right: var(--inset);
+  max-width: calc(56rem + 2 * var(--inset));
+  margin-inline: auto;
+}
+
+/* SITE HEADER */
+.site-header {
+  background-color: var(--brand-color);
+  background-image: url("../images/noise.png");
+}
+.article-nav {
+  background-color: transparent;
+  background-image: none;
+}
+.site-header nav {
+  padding-top: var(--s0-5);
+  padding-bottom: var(--s0-5);
+}
+.site-header nav ul {
+  list-style: none;
+}
+.site-header nav svg {
+  filter: var(--shadow-sticker);
+  height: var(--s2-5);
+  margin-inline-end: var(--s0-5);
+}
+.site-header nav a {
+  text-decoration: none;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+}
+.site-header nav ul:first-child {
+  font-family: var(--impact-font);
+}
+
+/* HOME PAGE */
+.hero {
+  background-color: var(--brand-color);
+  background-image: url("../images/noise.png");
+  padding-top: var(--s2-5);
+  padding-bottom: var(--s5);
+}
+.hero > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.hero__text {
+  max-width: var(--s30);
+  margin-inline: auto;
+}
+.hero__text h1 {
+  font-size: var(--text-5);
+}
+.hero__text p {
+  font-size: var(--text-1);
+  margin-top: var(--s1-5);
+  font-weight: 500;
+  color: var(--brown-dark);
+}
+.hero img {
+  margin-inline: auto;
+  height: var(--s15);
+  border-radius: var(--s1-5);
+  border: solid 8px var(--white);
+}
+.latest-articles {
+  padding-top: var(--s3);
+  padding-bottom: var(--s6);
+}
+.latest-articles__wrapper {
+  max-width: var(--s30);
+  margin-inline: auto;
+}
+.latest-articles h2 {
+  font-size: var(--text-2);
+}
+.latest-articles div > h2 {
+  color: var(--brown-light);
+  margin-bottom: var(--s1-5);
+}
+.latest-articles__card-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--s2);
+}
+.latest-articles__card {
+  flex-basis: var(--s10);
+  background-color: var(--white);
+  border-radius: var(--s0-75);
+  filter: var(--shadow-md);
+  padding: var(--s2) var(--s1) var(--s4) var(--s1);
+  line-height: var(--line-height-tight);
+}
+.latest-articles__card a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+/* ARTICLE */
+.article__highlight {
+  height: var(--article-highlight-height);
+  background-color: var(--brand-color);
+  background-image: url("../images/noise.png");
+}
+.article__container {
+  margin-inline: var(--s0-75);
+}
+.article__wrapper {
+  --side-padding: var(--s1);
+  max-width: calc(65ch + 2 * var(--side-padding));
+  background-color: var(--white);
+  border-radius: var(--s1);
+  margin-inline: auto;
+  margin-bottom: var(--s4);
+  padding: var(--s2) var(--side-padding) var(--s3);
+  margin-top: calc(var(--article-highlight-height) * -1 + var(--s2));
+  filter: var(--shadow-md);
+}
+.article__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+}
+.article__header h1 {
+  font-size: var(--text-3);
+  line-height: var(--line-height-tight);
+}
+.article__header > p {
+  font-size: var(--text-00);
+  color: var(--brown-light);
+  text-transform: uppercase;
+}
+.article__author {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--s2);
+}
+.article__author img {
+  height: var(--s3);
+  border-radius: 100%;
+  margin-inline-end: var(--s0-5);
+}
+.article__author p {
+  font-family: var(--impact-font);
+}
+.prose h2,
+.prose h3 {
+  line-height: var(--line-height-tight);
+  margin-top: var(--s1-5);
+  margin-bottom: var(--s0-5);
+}
+.prose h2 {
+  font-size: var(--text-2);
+}
+.prose h3 {
+  font-size: var(--text-1);
+}
+.prose p {
+  line-height: var(--line-height-prose);
+}
+.prose ol,
+.prose ul {
+  margin-inline-start: var(--s1-5);
+  margin-top: var(--s0-75);
+  margin-bottom: var(--s1);
+}
+.prose ul {
+  list-style-type: '🍌 ';
+}
+.prose li {
+  margin-bottom: var(--s0-25);
+}
+.prose a {
+  color: var(--black);
+  text-decoration-color: var(--brand-color);
+}
+
+/* SITE FOOTER */
+.site-footer {
+  padding-top: var(--s2);
+  padding-bottom: var(--s2);
+}
+.site-footer * {
+  font-size: var(--text-00);
+  color: var(--brown-light);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 44.5rem) {
+  .container {
+    --inset: var(--s2);
+  }
+  .hero > div {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .hero__text {
+    align-self: center;
+    margin: 0;
+  }
+  .hero img {
+    margin: 0;
+    height: var(--s18);
+  }
+  .latest-articles__wrapper {
+    max-width: 100%;
+  }
+  .latest-articles__card-holder {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: var(--s2);
+  }
+  .latest-articles__card {
+    flex-basis: var(--s22);
+  }
+  .article__highlight,
+  .article__wrapper {
+    --article-highlight-height: 15.5rem;
+  }
+  .article__wrapper {
+    --side-padding: var(--s4);
+    padding: var(--s4) var(--side-padding) var(--s6);
+    filter: var(--shadow-lg);
+  }
+  .article__header {
+    gap: var(--s1-5);
+  }
+  .article__header h1 {
+    font-size: var(--text-4);
+  }
+  .article__author img {
+    height: var(--s3-5);
+  }
+  .article__author p {
+    font-size: var(--text-1);
+  }
+  .prose {
+    font-size: var(--text-1);
+  }
+  .prose h2,
+  .prose h3 {
+    margin-top: var(--s2-5);
+    margin-bottom: var(--s0-75);
+  }
+
+  .prose h2 {
+    font-size: var(--text-3);
+  }
+  .prose h3 {
+    font-size: var(--text-2);
+  }
+}
+
+@media (min-width: 56rem) {
+  .site-header nav {
+    padding-top: var(--s1);
+    padding-bottom: var(--s1);
+  }
+  .site-header nav svg {
+    height: var(--s3);
+  }
+  .site-header nav a {
+    font-size: var(--text-1);
+  }
+  .hero__text h1 {
+    font-size: var(--text-6);
+  }
+  .hero__text p {
+    font-size: var(--text-2);
+  }
+  .hero img {
+    height: var(--s20);
+    border-radius: var(--s2);
+    border: solid 10px var(--white);
+  }
+  .latest-articles h2 {
+    font-size: var(--text-3);
+  }
+  .latest-articles div > h2 {
+    margin-bottom: var(--s2);
+  }
+  .latest-articles__card {
+    flex-basis: var(--s25);
+    border-radius: var(--s1);
+    filter: var(--shadow-lg);
+    padding: var(--s3) var(--s2) var(--s6) var(--s2);
+    line-height: var(--line-height-tight);
+  }
+  .site-footer * {
+    font-size: var(--text-0);
+  }
 }

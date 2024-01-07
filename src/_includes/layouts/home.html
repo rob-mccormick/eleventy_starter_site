@@ -17,7 +17,7 @@
       <div class="latest-articles__wrapper">
         <h2>Latest Articles</h2>
         <div class="latest-articles__card-holder">
-          {% for article in collections.articles %}
+          {% for article in collections.articles | reverse %}
             <article class="latest-articles__card">
               <a href="{{ article.url }}">
                 <h2>{{ article.data.title }}</h2>

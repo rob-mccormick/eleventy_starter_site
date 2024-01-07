@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <div class="article__highlight"></div>
+
+  <div class="article__container">
+    <article class="article__wrapper">
+      <header class="article__header">
+        <h1>{{ title }}</h1>
+        <p>{{ date }}</p>
+        <div class="article__author">
+          <img src="../../images/jimmy-jones-640.webp" alt="Headshot of Jimmy Jones, a journalist monkey">
+          <p>Jimmy Jones</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+    </article>
+  </div>
+{% endblock %}
